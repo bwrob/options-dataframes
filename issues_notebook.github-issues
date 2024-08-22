@@ -1,0 +1,12 @@
+[
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "All open issues"
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "repo:bwrob/python_repo_template is:open\n"
+  }
+]
