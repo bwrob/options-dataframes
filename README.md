@@ -16,23 +16,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/bwrob/python_repo_template">
-    <img src="images/python_mug.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/bwrob/options-dataframes">
+    <img src="images/python_mug.png" alt="Logo" width="160" height="160">
   </a>
 
-<h3 align="center">python_repo_template</h3>
+<h3 align="center">options-dataframes</h3>
 
   <p align="center">
-    Personal template for Python related projects.
+    High-performance Black-Scholes calculations for dataframes.
     <br />
-    <a href="https://github.com/bwrob/python_repo_template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/bwrob/options-dataframes"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/bwrob/python_repo_template">View Demo</a>
+    <a href="https://github.com/bwrob/options-dataframes">View Demo</a>
     ·
-    <a href="https://github.com/bwrob/python_repo_template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/bwrob/options-dataframes/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/bwrob/python_repo_template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/bwrob/options-dataframes/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -40,12 +40,8 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#usage">Usage</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -53,7 +49,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -67,22 +62,39 @@
 
 ![Project Screen Shot][product-screenshot]
 
-Here's a blank template to get started.
+Options-dataframes is a high-performance Python package designed for efficient Black-Scholes calculations on large option datasets. Leveraging the power of Polars, a high-performance data processing library, this package provides a fast and scalable solution for quantitative analysts and financial engineers.
+
+### Key Features
+
+Efficient Black-Scholes Calculations: Calculate option prices, implied volatilities, and greeks (delta, gamma, vega, theta, rho) with optimized algorithms.
+Pandas and Polars Compatibility: Seamlessly integrate with both Pandas and Polars dataframes, offering flexibility in data handling.
+Dependency Tree Optimization: Avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance.
+Robust Root-Finding Algorithms: Employ Brent and Jaeckel's algorithms for accurate and efficient implied volatility calculations.
+Python-First Approach: A user-friendly Python interface with clear and intuitive functions.
+Scalability: Handle large datasets with ease, thanks to Polars' parallel processing capabilities.
+
+### Target Audience
+
+* Quantitative analysts
+* Financial engineers
+* Researchers
+* Traders
+
+### Why Choose options-dataframes?
+
+Speed: Experience significantly faster Black-Scholes calculations compared to traditional Python implementations.
+Scalability: Handle large datasets without performance degradation.
+Ease of Use: A straightforward API that integrates seamlessly into your existing workflows.
+Accuracy: Rely on robust algorithms for accurate results.
+Performance Optimization: Benefit from intelligent dependency management and optimized calculations.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+## Usage
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -106,7 +118,7 @@ This is an example of how to list things you need to use the software and how to
 2. Clone the repo
 
    ```sh
-   git clone https://github.com/bwrob/python_repo_template.git
+   git clone https://github.com/bwrob/options-dataframes.git
    ```
 
 3. Install NPM packages
@@ -124,18 +136,13 @@ This is an example of how to list things you need to use the software and how to
 5. Change git remote url to avoid accidental pushes to base project
 
    ```sh
-   git remote set-url origin bwrob/python_repo_template
+   git remote set-url origin bwrob/options-dataframes
    git remote -v # confirm the changes
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,7 +154,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 * [ ] Feature 3
   * [ ] Nested Feature
 
-See the [open issues](https://github.com/bwrob/python_repo_template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/bwrob/options-dataframes/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -169,8 +176,8 @@ Don't forget to give the project a star! Thanks again!
 
 ### Top contributors
 
-<a href="https://github.com/bwrob/python_repo_template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=bwrob/python_repo_template" alt="contrib.rocks image" />
+<a href="https://github.com/bwrob/options-dataframes/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=bwrob/options-dataframes" alt="contrib.rocks image" />
 </a>
 
 <!-- LICENSE -->
@@ -185,7 +192,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - <email@email_client.com>
 
-Project Link: [https://github.com/bwrob/python_repo_template](https://github.com/bwrob/python_repo_template)
+Project Link: [https://github.com/bwrob/options-dataframes](https://github.com/bwrob/options-dataframes)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,32 +207,16 @@ Project Link: [https://github.com/bwrob/python_repo_template](https://github.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/bwrob/python_repo_template.svg?style=for-the-badge
-[contributors-url]: https://github.com/bwrob/python_repo_template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/bwrob/python_repo_template.svg?style=for-the-badge
-[forks-url]: https://github.com/bwrob/python_repo_template/network/members
-[stars-shield]: https://img.shields.io/github/stars/bwrob/python_repo_template.svg?style=for-the-badge
-[stars-url]: https://github.com/bwrob/python_repo_template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/bwrob/python_repo_template.svg?style=for-the-badge
-[issues-url]: https://github.com/bwrob/python_repo_template/issues
-[license-shield]: https://img.shields.io/github/license/bwrob/python_repo_template.svg?style=for-the-badge
-[license-url]: https://github.com/bwrob/python_repo_template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/bwrob/options-dataframes.svg?style=for-the-badge
+[contributors-url]: https://github.com/bwrob/options-dataframes/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/bwrob/options-dataframes.svg?style=for-the-badge
+[forks-url]: https://github.com/bwrob/options-dataframes/network/members
+[stars-shield]: https://img.shields.io/github/stars/bwrob/options-dataframes.svg?style=for-the-badge
+[stars-url]: https://github.com/bwrob/options-dataframes/stargazers
+[issues-shield]: https://img.shields.io/github/issues/bwrob/options-dataframes.svg?style=for-the-badge
+[issues-url]: https://github.com/bwrob/options-dataframes/issues
+[license-shield]: https://img.shields.io/github/license/bwrob/options-dataframes.svg?style=for-the-badge
+[license-url]: https://github.com/bwrob/options-dataframes/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/bartoszmwroblewski
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
