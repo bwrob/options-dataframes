@@ -55,38 +55,43 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">  graph TD;
+    D --&gt; DK;
+    d_m --&gt; N_mm;
+    d_m --&gt; N_pm;
+    d_p --&gt; d_m;
+    d_p --&gt; N_mp;
+    d_p --&gt; N_pp;
+    d_p --&gt; N_prime;
+    DK --&gt; C;
+    DK --&gt; P;
+    K --&gt; DK;
     K --&gt; log_money;
+    log_money --&gt; d_p;
+    N_mm --&gt; P;
+    N_mp --&gt; P;
+    N_pm --&gt; C;
+    N_pp --&gt; C;
+    N_pp --&gt; Delta_C;
+    N_pp --&gt; Delta_P;
+    N_prime --&gt; Gamma;
+    r --&gt; D;
+    S --&gt; C;
+    S --&gt; Gamma;
+    S --&gt; log_money;
+    S --&gt; P;
     sigma --&gt; d_m;
     sigma --&gt; d_p;
+    sigma --&gt; Gamma;
     sigma --&gt; sigma_sq;
-    t --&gt; tau[""$$t = 0$$""];
+    sigma_sq --&gt; d_p;
+    sqrt_tau --&gt; d_p;
+    sqrt_tau --&gt; Gamma;
+    t --&gt; tau;
     T --&gt; tau;
-    r --&gt; D;
-    S --&gt; F;
-
     tau --&gt; d_m;
     tau --&gt; d_p;
     tau --&gt; D;
     tau --&gt; sqrt_tau;
-
-    D --&gt; C;
-    D --&gt; F;
-    F --&gt; C;
-    F --&gt; log_money;
-    K --&gt; C;
-
-    log_money --&gt; d_p;
-    sigma_sq --&gt; d_p;
-    sqrt_tau --&gt; d_p;
-    d_p --&gt; d_m;
-
-    d_m --&gt; N_mm;
-    d_m --&gt; N_pm;
-    d_p --&gt; N_mp;
-    d_p --&gt; N_pp;
-
-    N_pm --&gt; C;
-    N_pp --&gt; C;
 </pre>
 </div>
 <p></p></figure><p></p>

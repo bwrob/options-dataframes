@@ -201,52 +201,43 @@ Example dependency tree for call and put options price, delta and gamma:
 
 ```mermaid
   graph TD;
+    D --> DK;
+    d_m --> N_mm;
+    d_m --> N_pm;
+    d_p --> d_m;
+    d_p --> N_mp;
+    d_p --> N_pp;
+    d_p --> N_prime;
+    DK --> C;
+    DK --> P;
+    K --> DK;
     K --> log_money;
+    log_money --> d_p;
+    N_mm --> P;
+    N_mp --> P;
+    N_pm --> C;
+    N_pp --> C;
+    N_pp --> Delta_C;
+    N_pp --> Delta_P;
+    N_prime --> Gamma;
+    r --> D;
+    S --> C;
+    S --> Gamma;
+    S --> log_money;
+    S --> P;
     sigma --> d_m;
     sigma --> d_p;
+    sigma --> Gamma;
     sigma --> sigma_sq;
+    sigma_sq --> d_p;
+    sqrt_tau --> d_p;
+    sqrt_tau --> Gamma;
     t --> tau;
     T --> tau;
-    r --> D;
-    S --> log_money;
-    K --> log_money;
-
     tau --> d_m;
     tau --> d_p;
     tau --> D;
     tau --> sqrt_tau;
-
-    D --> DK;
-    K --> DK;
-
-    log_money --> d_p;
-    sigma_sq --> d_p;
-    sqrt_tau --> d_p;
-    d_p --> d_m;
-
-    d_m --> N_mm;
-    d_m --> N_pm;
-    d_p --> N_mp;
-    d_p --> N_pp;
-
-    N_pm --> C;
-    N_pp --> C;
-    S --> C;
-    DK --> C;
-
-    N_mm --> P;
-    N_mp --> P;
-    DK --> P;
-    S --> P;
-
-    N_pp --> Delta_C;
-    N_pp --> Delta_P;
-
-    d_p --> N_prime;
-    N_prime --> Gamma;
-    S --> Gamma;
-    sigma --> Gamma;
-    sqrt_tau --> Gamma;
 ```
 
 For more information, please refer to the [documentation](https://github.com/bwrob/options-dataframes/blob/main/src/dataframe/README.md).
