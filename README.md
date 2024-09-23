@@ -197,7 +197,7 @@ All functions with dataframe inputs are agnostic to the dataframe type, and can 
 
 To avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance. Partial calculations that would be used ex. for both delta and theta are only performed once.
 
-Example dependency tree for `Call Price`:
+Example dependency tree for call and put options price, delta and gamma:
 
 ```mermaid
   graph TD;
@@ -208,18 +208,16 @@ Example dependency tree for `Call Price`:
     t --> tau;
     T --> tau;
     r --> D;
-    S --> F;
+    S --> log_money;
+    K --> log_money;
 
     tau --> d_m;
     tau --> d_p;
     tau --> D;
     tau --> sqrt_tau;
 
-    D --> C;
-    D --> F;
-    F --> C;
-    F --> log_money;
-    K --> C;
+    D --> DK;
+    K --> DK;
 
     log_money --> d_p;
     sigma_sq --> d_p;
@@ -233,6 +231,22 @@ Example dependency tree for `Call Price`:
 
     N_pm --> C;
     N_pp --> C;
+    S --> C;
+    DK --> C;
+
+    N_mm --> P;
+    N_mp --> P;
+    DK --> P;
+    S -- P;
+
+    N_pp --> Delta_C;
+    N_pp --> Delta_P;
+
+    d_p --> N_prime;
+    N_prime --> Gamma;
+    S --> Gamma;
+    sigma --> Gamma;
+    sqrt_tau --> Gamma;
 ```
 
 For more information, please refer to the [documentation](https://github.com/bwrob/options-dataframes/blob/main/src/dataframe/README.md).
