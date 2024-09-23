@@ -205,9 +205,9 @@ Example dependency tree for `Call Price`:
     sigma --> d_m;
     sigma --> d_p;
     sigma --> sigma_sq;
-    t --> tau[$$\tau = T - t$$];
+    t --> tau["$$\tau = T - t$$"];
     T --> tau;
-    r --> D[$-r \tau$];
+    r --> D["$$-r \tau$$"];
     S --> F;
 
     tau --> d_m;
