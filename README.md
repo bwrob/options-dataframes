@@ -67,10 +67,15 @@ Options-dataframes is a high-performance Python package designed for efficient B
 ### Key Features
 
 Efficient Black-Scholes Calculations: Calculate option prices, implied volatilities, and greeks (delta, gamma, vega, theta, rho) with optimized algorithms.
+
 Pandas and Polars Compatibility: Seamlessly integrate with both Pandas and Polars dataframes, offering flexibility in data handling.
+
 Dependency Tree Optimization: Avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance.
+
 Robust Root-Finding Algorithms: Employ Brent and Jaeckel's algorithms for accurate and efficient implied volatility calculations.
+
 Python-First Approach: A user-friendly Python interface with clear and intuitive functions.
+
 Scalability: Handle large datasets with ease, thanks to Polars' parallel processing capabilities.
 
 ### Target Audience
