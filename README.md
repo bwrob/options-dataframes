@@ -205,9 +205,9 @@ Example dependency tree for `Call Price`:
     sigma --> d_m;
     sigma --> d_p;
     sigma --> sigma_sq;
-    t --> tau;
+    t --> tau[$$\tau = T - t$$];
     T --> tau;
-    r --> D;
+    r --> D[$$e^{-r \tau}$$];
     S --> F;
 
     tau --> d_m;
@@ -241,16 +241,44 @@ For more information, please refer to the [documentation](https://github.com/bwr
 
 Employ Rust-implemented algorithms for accurate and efficient implied volatility calculation. Algorithms include:
 
-- **Brent's method** - general purpose bracketed algorithm for finding the root of a function.
-- **Jaeckel's rational algorithm** - algorithm specifically optimized for Black-Scholes implied volatility calculations.
+#### Brent's method
+
+General purpose bracketed algorithm for finding the root of a continous function.
+
+- [Rust native implementation](https://argmin-rs.github.io/argmin/argmin/solver/brent/index.html)
+
+#### Jaeckel's rational algorithm
+
+Algorithm specifically optimized for Black-Scholes implied volatility calculations.
+
+- [The original paper](http://www.jaeckel.org/LetsBeRational.pdf)
+- [Pure Python implementation](https://github.com/vollib/py_lets_be_rational)
+- [Rust implementation](https://github.com/nakashima-hikaru/implied-vol)
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Create readme
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+- [x] Create Development README.
+- [ ] Dummy Rust-Python interop package.
+- [ ] Calculation of BS price (no dependency tree).
+- [ ] Test data included in package.
+- [ ] Set up CI pipeline.
+- [ ] Calculation of IV.
+  - [ ] Brent's method (use Rust implementation).
+  - [ ] Jaeckel's rational algorithm (use implied-vol Rust crate).
+  - [ ] Performance comparison.
+- [ ] Implementation of dependency tree for BS and IV.
+- [ ] Calculation of greeks.
+  - [ ] Delta.
+  - [ ] Gamma.
+  - [ ] Vega.
+  - [ ] Theta.
+  - [ ] Rho.
+  - [ ] Dual Delta.
+  - [ ] Vanna.
+  - [ ] Vomma.
+- [ ] Release to PyPI.
+- [ ] Internal IV implementation.
 
 See the [open issues](https://github.com/bwrob/options-dataframes/issues) for a full list of proposed features (and known issues).
 
@@ -298,8 +326,8 @@ Project Link: [https://github.com/bwrob/options-dataframes](https://github.com/b
 ## Acknowledgments
 
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-- []()
-- []()
+- [Peter Jaeckel](http://www.jaeckel.org/)
+- [Polars](https://pola-rs.github.io/polars/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
