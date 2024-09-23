@@ -237,7 +237,7 @@ Example dependency tree for call and put options price, delta and gamma:
     N_mm --> P;
     N_mp --> P;
     DK --> P;
-    S -- P;
+    S --> P;
 
     N_pp --> Delta_C;
     N_pp --> Delta_P;

@@ -4,7 +4,7 @@
     sigma --> d_m;
     sigma --> d_p;
     sigma --> sigma_sq;
-    t --> tau;
+    t --> tau[""$$t = 0$$""];
     T --> tau;
     r --> D;
     S --> F;
