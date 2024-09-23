@@ -1,0 +1,35 @@
+```{mermaid}
+  graph TD;
+    K --> log_money;
+    sigma --> d_m;
+    sigma --> d_p;
+    sigma --> sigma_sq;
+    t --> tau;
+    T --> tau;
+    r --> D;
+    S --> F;
+
+    tau --> d_m;
+    tau --> d_p;
+    tau --> D;
+    tau --> sqrt_tau;
+
+    D --> C;
+    D --> F;
+    F --> C;
+    F --> log_money;
+    K --> C;
+
+    log_money --> d_p;
+    sigma_sq --> d_p;
+    sqrt_tau --> d_p;
+    d_p --> d_m;
+
+    d_m --> N_mm;
+    d_m --> N_pm;
+    d_p --> N_mp;
+    d_p --> N_pp;
+
+    N_pm --> C;
+    N_pp --> C;
+```

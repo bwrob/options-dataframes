@@ -171,3 +171,7 @@ README_files/
 
 # Visual Studio Code
 .vscode/
+
+# Dependency graph
+dependency_graph_files/
+dependency_graph

@@ -42,13 +42,8 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#usage">Usage</a></li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#examples">Detailed Features Overview</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -60,104 +55,202 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Project Screen Shot][product-screenshot]
+![Project Screenshot Placeholder][product-screenshot]
 
 Options-dataframes is a high-performance Python package designed for efficient Black-Scholes calculations on large option datasets. Leveraging the power of Polars, a high-performance data processing library, this package provides a fast and scalable solution for quantitative analysts and financial engineers.
 
 ### Key Features
 
-Efficient Black-Scholes Calculations: Calculate option prices, implied volatilities, and greeks (delta, gamma, vega, theta, rho) with optimized algorithms.
+- **Efficient Black-Scholes Calculations**: Calculate option prices, implied volatilities, and greeks (delta, gamma, vega, theta, rho) with optimized algorithms.
 
-Pandas and Polars Compatibility: Seamlessly integrate with both Pandas and Polars dataframes, offering flexibility in data handling.
+- **Pandas and Polars Compatibility**: Seamlessly integrate with both Pandas and Polars dataframes, offering flexibility in data handling.
 
-Dependency Tree Optimization: Avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance.
+- **Dependency Tree Optimization**: Avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance.
 
-Robust Root-Finding Algorithms: Employ Brent and Jaeckel's algorithms for accurate and efficient implied volatility calculations.
-
-Python-First Approach: A user-friendly Python interface with clear and intuitive functions.
-
-Scalability: Handle large datasets with ease, thanks to Polars' parallel processing capabilities.
+- **Robust Root-Finding Algorithms**: Employ Brent and Jaeckel's algorithms for accurate and efficient implied volatility calculations.
 
 ### Target Audience
 
-* Quantitative analysts
-* Financial engineers
-* Researchers
-* Traders
+- Quantitative analysts
+- Financial engineers
+- Researchers
+- Traders
 
 ### Why Choose options-dataframes?
 
-Speed: Experience significantly faster Black-Scholes calculations compared to traditional Python implementations.
-Scalability: Handle large datasets without performance degradation.
-Ease of Use: A straightforward API that integrates seamlessly into your existing workflows.
-Accuracy: Rely on robust algorithms for accurate results.
-Performance Optimization: Benefit from intelligent dependency management and optimized calculations.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-* npm
-
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-
-   ```sh
-   git clone https://github.com/bwrob/options-dataframes.git
-   ```
-
-3. Install NPM packages
-
-   ```sh
-   npm install
-   ```
-
-4. Enter your API in `config.js`
-
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-5. Change git remote url to avoid accidental pushes to base project
-
-   ```sh
-   git remote set-url origin bwrob/options-dataframes
-   git remote -v # confirm the changes
-   ```
+- Speed: Experience significantly faster Black-Scholes calculations compared to traditional Python implementations.
+- Scalability: Handle large datasets without performance degradation.
+- Ease of Use: A straightforward API that integrates seamlessly into your existing workflows.
+- Accuracy: Rely on robust algorithms for accurate results.
+- Performance Optimization: Benefit from intelligent dependency management and optimized calculations.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
+## Usage
+
+Here is an example of how to use the package on the included test dataframe.
+
+```python
+import options_dataframes as odf
+
+# Loads included test dataframe, including prices
+test_option_data = odf.test_option_data(length=10_000)
+
+# Calculates option implied volatilities
+test_option_data = odf.with_black_scholes(test_option_data, method="brent")
+
+# Calculates requested option greeks
+test_option_data = odf.with_black_scholes_greeks(
+    test_option_data,
+    greeks=[odf.Greeks.Delta, odf.Greeks.Theta],
+)
+
+odf.show(test_option_data, max_rows=5, random=True)
+```
+
+*For more examples, please refer to the [Documentation](https://example.com)*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+The package is available in PyPI. To get started, follow the instructions below:
+
+1. Install the package in a virtual environment
+
+   ```bash
+   source my_env/bin/activate
+   pip install options-dataframes
+   ```
+
+   or using poetry
+
+   ```bash
+   poetry install options-dataframes
+   ```
+
+2. Import and use the package
+
+    ```python
+    import options_dataframes as odf
+    ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Detailed Features Overview
+
+### Black-Scholes Inputs
+
+In the below by **BS inputs** we mean the following columns:
+
+- `strike`
+- `expiration`
+- `option_type`
+- `risk_free_rate`
+- `underlying_price`
+
+and either `underlying_price` or `implied_volatility`. The inputs will be denoted in mathematical formulas as:
+
+- $S$ - `underlying_price`
+- $T$ - `expiration`
+- $r$ - `risk_free_rate`
+- $K$ - `strike`
+- $t$ - `time_to_expiration`
+- $\sigma$ - `implied_volatility`
+- $P$ - `option_price`
+
+### Black-Scholes Calculations
+
+- `odf.with_black_scholes`
+  - Validates input dataframe contains necessary BS inputs.
+  - Calculates option prices from BS inputs or implied volatilities, if price is given.
+  - Appends respective columns `option_price` or `implied_volatility` to the original dataframe.
+
+- `odf.with_black_scholes_greeks`
+  - Validates input dataframe contains necessary BS inputs, if `implied_volatility` is not present calculates it.
+  - Calculates greeks with optimized algorithms.
+  - Avalible greeks:
+    - First-order:
+      - Delta - $\frac{\partial P}{\partial S}$
+      - Rho - $\frac{\partial P}{\partial r}$
+      - Vega - $\frac{\partial P}{\partial \sigma}$
+      - Theta - $\frac{\partial P}{\partial t}$
+      - Dual Delta - $\frac{\partial P}{\partial K}$
+    - Second-order:
+      - Gamma - $\frac{\partial^2 P}{\partial S^2}$
+      - Vanna - $\frac{\partial^2 P}{\partial \sigma \partial S}$
+      - Vomma - $\frac{\partial^2 P}{\partial \sigma^2}$
+  - Appends respective columns `delta`, `gamma`, `vega`, `theta`, `rho` to the original dataframe.
+
+### Pandas and Polars Compatibility
+
+Seamlessly integrate with both Pandas and Polars dataframes, offering flexibility in data handling.
+
+All calculations are performed natively in Rust using Polars and are highly optimized for performance.
+The Python package provides a [dataframe wrapper](https://github.com/bwrob/options-dataframes/tree/main/src/dataframe) for both Pandas and Polars dataframes.
+
+All functions with dataframe inputs are agnostic to the dataframe type, and can be used with both.
+
+### Dependency Tree Optimization
+
+To avoid redundant calculations by intelligently managing dependencies, ensuring maximum performance. Partial calculations that would be used ex. for both delta and theta are only performed once.
+
+Example dependency tree for `Call Price`:
+
+```mermaid
+  graph TD;
+    K --> log_money;
+    sigma --> d_m;
+    sigma --> d_p;
+    sigma --> sigma_sq;
+    t --> tau;
+    T --> tau;
+    r --> D;
+    S --> F;
+
+    tau --> d_m;
+    tau --> d_p;
+    tau --> D;
+    tau --> sqrt_tau;
+
+    D --> C;
+    D --> F;
+    F --> C;
+    F --> log_money;
+    K --> C;
+
+    log_money --> d_p;
+    sigma_sq --> d_p;
+    sqrt_tau --> d_p;
+    d_p --> d_m;
+
+    d_m --> N_mm;
+    d_m --> N_pm;
+    d_p --> N_mp;
+    d_p --> N_pp;
+
+    N_pm --> C;
+    N_pp --> C;
+```
+
+For more information, please refer to the [documentation](https://github.com/bwrob/options-dataframes/blob/main/src/dataframe/README.md).
+
+### Robust Root-Finding Algorithms
+
+Employ Rust-implemented algorithms for accurate and efficient implied volatility calculation. Algorithms include:
+
+- **Brent's method** - general purpose bracketed algorithm for finding the root of a function.
+- **Jaeckel's rational algorithm** - algorithm specifically optimized for Black-Scholes implied volatility calculations.
 
 <!-- ROADMAP -->
 ## Roadmap
 
-* [x] Create readme
-* [ ] Feature 2
-* [ ] Feature 3
-  * [ ] Nested Feature
+- [x] Create readme
+- [ ] Feature 2
+- [ ] Feature 3
+  - [ ] Nested Feature
 
 See the [open issues](https://github.com/bwrob/options-dataframes/issues) for a full list of proposed features (and known issues).
 
@@ -204,9 +297,9 @@ Project Link: [https://github.com/bwrob/options-dataframes](https://github.com/b
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* []()
-* []()
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- []()
+- []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
