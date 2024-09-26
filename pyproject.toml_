@@ -1,19 +1,6 @@
 [build-system]
-requires = ["maturin>=1.7,<2.0"]
+requires = ["maturin"]
 build-backend = "maturin"
-
-[project]
-name = "options_dataframes"
-requires-python = ">=3.8"
-classifiers = [
-    "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
-]
-dynamic = ["version"]
-
-[tool.maturin]
-features = ["pyo3/extension-module"]
 
 [tool.poetry]
 name = "options_dataframes"
@@ -27,14 +14,10 @@ packages = [{ include = "src" }]
 python = "^3.12"
 pandas = "^2.2.2"
 polars = "^1.8.2"
-maturin = "^1.7.2"
-pyarrow = "^17.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pre_commit = "^3.3.2"
-ipykernel = "^6.29.5"
-jupyter = "^1.0"
-
+maturin = "^1.7.2"
 
 [tool.docformatter]
 recursive = true
@@ -45,4 +28,3 @@ blank = true
 
 [tool.basedpyright]
 typeCheckingMode = "basic"
-venvPath = "."

@@ -263,7 +263,7 @@ Algorithm specifically optimized for Black-Scholes implied volatility calculatio
 ## Roadmap
 
 - [x] Create Development README.
-- [ ] Dummy Rust-Python interop package.
+- [x] Dummy Rust-Python interop package.
 - [ ] Calculation of BS price (no dependency tree).
 - [ ] Test data included in package.
 - [ ] Set up CI pipeline.
