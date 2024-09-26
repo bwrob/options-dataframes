@@ -7,17 +7,9 @@ assignees: ''
 
 ---
 
-## Roadmap step
-
-Part of the roadmap you would like to add to the issue.
-
 ## Description
 
 Describe the feature in detail.
-
-## What does it solve?
-
-What does it solve?
 
 ## References
 
