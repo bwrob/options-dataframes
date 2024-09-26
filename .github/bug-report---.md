@@ -9,7 +9,7 @@ labels: bug
 
 A clear and concise description of what the bug is.
 
-### Steps to reproduce
+## Steps to reproduce
 
 Steps to reproduce the behavior.
 
