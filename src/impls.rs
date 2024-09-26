@@ -24,7 +24,7 @@ fn array_to_rust(arrow_array: &Bound<PyAny>) -> PyResult<ArrayRef> {
 
     unsafe {
         let field = ffi::import_field_from_c(schema.as_ref()).unwrap();
-        let array = ffi::import_array_from_c(*array, field.dtype).unwrap();
+        let array = ffi::import_array_from_c(*array, field.data_type).unwrap();
         Ok(array)
     }
 }
@@ -36,8 +36,8 @@ pub(crate) fn to_py_array(
     array: ArrayRef,
 ) -> PyResult<PyObject> {
     let schema = Box::new(ffi::export_field_to_c(&ArrowField::new(
-        "".into(),
-        array.dtype().clone(),
+        "",
+        array.data_type().clone(),
         true,
     )));
     let array = Box::new(ffi::export_array_to_c(array));
@@ -72,7 +72,7 @@ pub fn py_series_to_rust_series(series: &Bound<PyAny>) -> PyResult<Series> {
 pub fn rust_series_to_py_series(series: &Series) -> PyResult<PyObject> {
     // ensure we have a single chunk
     let series = series.rechunk();
-    let array = series.to_arrow(0, false);
+    let array = series.to_arrow(0, CompatLevel::oldest());
 
     Python::with_gil(|py| {
         // import pyarrow

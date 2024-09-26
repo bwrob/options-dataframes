@@ -17,9 +17,9 @@ fn factorial(n: u128) -> PyResult<u128> {
 
 fn _factorial(n: u128) -> u128 {
     if n <= 1 {
-        return n;
+        n
     } else {
-        return n * _factorial(n - 1);
+        n * _factorial(n - 1)
     }
 }
 
@@ -74,5 +74,6 @@ fn hamming_distance_strs(a: Option<&str>, b: Option<&str>) -> Option<u32> {
 fn options_dataframes(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
     m.add_function(wrap_pyfunction!(factorial, m)?)?;
+    m.add_function(wrap_pyfunction!(hamming_distance, m)?)?;
     Ok(())
 }
