@@ -7,6 +7,31 @@
   {
     "kind": 2,
     "language": "github-issues",
-    "value": "repo:bwrob/options-dataframes is:open\n"
+    "value": "$repo=repo:bwrob/options-dataframes is:open"
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "$repo milestone:\"Dummy Rust-Python interop package.\""
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "$repo milestone:\"Black-Scholes Calculations\""
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "$repo milestone:\"CI Pipeline and Git convinience\""
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "$repo milestone:\"Options Test Data\""
+  },
+  {
+    "kind": 2,
+    "language": "github-issues",
+    "value": "$repo milestone:\"Implied Volatility Calculation\""
   }
 ]
