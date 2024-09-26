@@ -24,7 +24,7 @@ fn array_to_rust(arrow_array: &Bound<PyAny>) -> PyResult<ArrayRef> {
 
     unsafe {
         let field = ffi::import_field_from_c(schema.as_ref()).unwrap();
-        let array = ffi::import_array_from_c(*array, field.data_type).unwrap();
+        let array = ffi::import_array_from_c(*array, field.dtype).unwrap();
         Ok(array)
     }
 }
@@ -36,8 +36,8 @@ pub(crate) fn to_py_array(
     array: ArrayRef,
 ) -> PyResult<PyObject> {
     let schema = Box::new(ffi::export_field_to_c(&ArrowField::new(
-        "",
-        array.data_type().clone(),
+        "".into(),
+        array.dtype().clone(),
         true,
     )));
     let array = Box::new(ffi::export_array_to_c(array));
@@ -57,7 +57,7 @@ pub fn py_series_to_rust_series(series: &Bound<PyAny>) -> PyResult<Series> {
     // rechunk series so that they have a single arrow array
     let series = series.call_method0("rechunk")?;
 
-    let name = series.getattr("name")?.extract::<String>()?;
+    let name: PlSmallStr = series.getattr("name")?.extract::<String>()?.into();
 
     // retrieve pyarrow array
     let array = series.call_method0("to_arrow")?;
@@ -65,7 +65,7 @@ pub fn py_series_to_rust_series(series: &Bound<PyAny>) -> PyResult<Series> {
     // retrieve rust arrow array
     let array = array_to_rust(&array)?;
 
-    Series::try_from((name.as_str(), array))
+    Series::try_from((name, array))
         .map_err(|e| PyValueError::new_err(format!("{}", e)))
 }
 

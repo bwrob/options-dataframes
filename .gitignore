@@ -175,3 +175,4 @@ README_files/
 # Dependency graph
 dependency_graph_files/
 dependency_graph
+Cargo.lock
